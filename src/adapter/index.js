@@ -9,3 +9,5 @@ export { spreadOver } from './spreadOver';
 export { overArgs } from './overArgs';
 
 export { pipeFunctions } from './pipeFunctions';
+
+export { flip } from './flip';
