@@ -1,5 +1,5 @@
 {
-  "name": "@darrenwang/30s_npm",
+  "name": "@darrenwang/30s-npm",
   "version": "0.0.1",
   "description": "a wrap for 30secondsofcode javascript",
   "main": "src/index.js",
@@ -38,10 +38,10 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangyu0829/30s_npm.git"
+    "url": "git+https://github.com/wangyu0829/30s-npm.git"
   },
   "bugs": {
-    "url": "https://github.com/wangyu0829/30s_npm/issues"
+    "url": "https://github.com/wangyu0829/30s-npm/issues"
   },
-  "homepage": "https://github.com/wangyu0829/30s_npm#readme"
+  "homepage": "https://github.com/wangyu0829/30s-npm#readme"
 }
