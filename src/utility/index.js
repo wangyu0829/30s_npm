@@ -1,0 +1,2 @@
+
+export { httpGet } from './httpGet';

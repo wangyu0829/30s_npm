@@ -19,10 +19,15 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "axios": "^0.19.1",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.1.0",
     "inquirer": "^7.0.1",
-    "semantic-release": "^15.14.0"
+    "semantic-release": "^15.14.0",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.0"
   },
   "config": {
     "commitizen": {
@@ -35,7 +40,10 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "babel-preset-env": "^1.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wangyu0829/30s-npm.git"
