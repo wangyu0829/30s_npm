@@ -1,36 +1,6 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 const path = require('path');
-const writeFile = async (fileName, content) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(fileName, content, err => {
-      if (err) {
-        reject();
-        console.log(JSON.stringify(err.message));
-      }
-      resolve();
-    });
-  });
-};
-
-const appendFile = async (fileName, content) => {
-  return new Promise((resolve, reject) => {
-    fs.appendFile(fileName, content, err => {
-      if (err) {
-        reject();
-        console.log(JSON.stringify(err.message));
-      }
-      resolve();
-    });
-  });
-};
-
-const timeout = duration =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, duration);
-  });
+const util = require('./util');
 
 const questions = [
   {
@@ -48,19 +18,19 @@ const questions = [
       'Object',
       'String',
       'Type',
-      'Utility',
+      'Utility'
     ],
     validate: function(input) {
       var done = this.async();
 
-      timeout(300).then(res => {
+      util.timeout(300).then(res => {
         if (!input) {
           done('You need to choose a type');
           return;
         }
         done(null, true);
       });
-    },
+    }
   },
   {
     type: 'input',
@@ -69,33 +39,33 @@ const questions = [
     validate: function(input) {
       var done = this.async();
 
-      timeout(300).then(res => {
+      util.timeout(300).then(res => {
         if (!input) {
           done('You need to provide a filename');
           return;
         }
         done(null, true);
       });
-    },
+    }
   },
   {
     type: 'input',
     name: 'descript',
     message: 'please input the description',
-    default: '',
+    default: ''
   },
   {
     type: 'input',
     name: 'author',
     message: 'please input the file author',
-    default: '',
+    default: ''
   },
   {
     type: 'input',
     name: 'content',
     message: 'please input the file content',
-    default: '',
-  },
+    default: ''
+  }
 ];
 
 const appendTmpl = args => `
@@ -121,13 +91,13 @@ prompt(questions).then(res => {
 
   let appendFileName = path.resolve(__dirname, `../src/${module}/index.js`);
   let appendText = appendTmpl(res);
-  appendFile(appendFileName, appendText);
+  util.appendFile(appendFileName, appendText);
 
   const fileReg = /\w.*\.\w.*/;
   let filePath = path.resolve(
     __dirname,
-    `../src/${module}/${fileName}${!fileReg.test(fileName) ? '.js' : ''}`,
+    `../src/${module}/${fileName}${!fileReg.test(fileName) ? '.js' : ''}`
   );
   let contentText = contentTmpl(res);
-  writeFile(filePath, contentText);
+  util.writeFile(filePath, contentText);
 });
